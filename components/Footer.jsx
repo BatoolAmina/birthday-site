@@ -18,7 +18,6 @@ export default function Footer() {
       <motion.button whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.95 }} onClick={replay} className="mt-10 rounded-full border border-gold/50 bg-gold/10 px-8 py-3 font-display text-lg text-gold-100">
         Replay the magic 🎉
       </motion.button>
-      <p className="mt-16 text-sm text-white/40">Made with ❤️ by {config.from}</p>
     </footer>
   );
 }

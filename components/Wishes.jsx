@@ -28,7 +28,7 @@ export function Letter() {
         {config.letter.map((p, i) => (
           <motion.p key={i} {...reveal} className="mt-6 text-lg leading-8 text-white/80">{p}</motion.p>
         ))}
-        <motion.p {...reveal} className="mt-10 font-display text-xl italic text-gold-200">With all my love,<br />{config.from}</motion.p>
+        <motion.p {...reveal} className="mt-10 font-display text-xl italic text-gold-200">With best wishes,<br />{config.from}</motion.p>
       </div>
     </section>
   );
@@ -38,7 +38,7 @@ export default function Wishes() {
   const half = Math.ceil(config.wishes.length / 2);
   return (
     <section id="wishes" className="relative z-10 space-y-5 py-32">
-      <SectionTitle eyebrow="Love from everyone" title="Wishes just for you" className="mb-14 px-6" />
+      <SectionTitle eyebrow="Some duas from my side" title="Wishes just for you" className="mb-14 px-6" />
       <Row items={config.wishes.slice(0, half)} />
       <Row items={config.wishes.slice(half)} reverse />
     </section>
