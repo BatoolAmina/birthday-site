@@ -1,4 +1,4 @@
-# 🎂 Cinematic Birthday Site (Next.js + Tailwind + Framer Motion)
+# Cinematic Birthday Site (Next.js + Tailwind + Framer Motion)
 
 ## Run it
 ```bash
