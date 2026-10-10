@@ -21,7 +21,7 @@ export default function Videos({ onVideoActiveChange }) {
 
   return (
     <section id="films" className="relative z-10 px-6 py-32 md:px-12">
-      <SectionTitle eyebrow="In motion" title="The movie of us" sub="Press play on a few of our favourite moments." />
+      <SectionTitle eyebrow="In motion" title="The movie of us" sub="Press play on few of the favourite moments." />
       <div className="mx-auto mt-16 grid max-w-6xl gap-6 md:grid-cols-3">
         {config.videos.map((v, i) => (
           <motion.button
