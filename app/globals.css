@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; background: #0b0716; }
+body {
+  background: #0b0716;
+  color: #fbf3e4;
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: #f2c879; color: #1b0f2e; }
+:focus-visible { outline: 2px solid #f2c879; outline-offset: 3px; border-radius: 6px; }
+
+.text-shimmer {
+  background: linear-gradient(110deg, #f2c879 20%, #fff4d6 38%, #ff8fb1 50%, #fff4d6 62%, #f2c879 80%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+.glow-text { text-shadow: 0 0 40px rgba(242, 200, 121, .35), 0 0 120px rgba(255, 143, 177, .25); }
+
+.cinematic-light {
+  opacity: .5;
+  background:
+    radial-gradient(ellipse at 16% 44%, rgba(255, 143, 177, .15), transparent 34%),
+    radial-gradient(ellipse at 84% 52%, rgba(120, 96, 255, .18), transparent 36%);
+  animation: light-drift 16s ease-in-out infinite alternate;
+}
+
+/* film grain */
+.grain {
+  position: fixed; inset: -50%; width: 200%; height: 200%;
+  pointer-events: none; z-index: 70; opacity: .06;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation: grain 1s steps(6) infinite;
+}
+
+.outline-text { -webkit-text-stroke: 1px rgba(242, 200, 121, .55); color: transparent; }
+
+.animate-marquee { animation: marquee 55s linear infinite; }
+.animate-marquee-rev { animation: marquee-rev 65s linear infinite; }
+.marquee-wrap:hover > div { animation-play-state: paused; }
+.animate-ticker { animation: marquee 30s linear infinite; }
+.animate-spin-slow { animation: spin 140s linear infinite; }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-drift { animation: drift 22s ease-in-out infinite alternate; }
+.animate-drift-2 { animation: drift 28s ease-in-out infinite alternate-reverse; }
+
+.flame { transform-box: fill-box; transform-origin: 50% 100%; animation: flicker .55s ease-in-out infinite; transition: opacity .35s, transform .35s; }
+.flame-out { opacity: 0; transform: scale(0); animation: none; }
+.smoke { animation: smoke 2.2s ease-out forwards; transform-box: fill-box; }
+
+@keyframes shimmer { 0% { background-position: 200% 0 } 100% { background-position: -200% 0 } }
+@keyframes grain {
+  0%,100% { transform: translate(0,0) } 20% { transform: translate(-5%,3%) } 40% { transform: translate(3%,-6%) }
+  60% { transform: translate(-4%,-3%) } 80% { transform: translate(6%,4%) }
+}
+@keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+@keyframes marquee-rev { from { transform: translateX(-50%) } to { transform: translateX(0) } }
+@keyframes spin { to { transform: rotate(360deg) } }
+@keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-14px) } }
+@keyframes drift { from { transform: translate3d(-6%, -4%, 0) scale(1) } to { transform: translate3d(8%, 6%, 0) scale(1.25) } }
+@keyframes flicker {
+  0%,100% { transform: scale(1,1) rotate(-2deg) } 50% { transform: scale(.88,1.14) rotate(2.5deg) }
+}
+@keyframes smoke { 0% { opacity: .7; transform: translateY(0) scale(.6) } 100% { opacity: 0; transform: translateY(-46px) scale(2.2) } }
+@keyframes eq { 0%,100% { height: 20% } 50% { height: 100% } }
+@keyframes light-drift {
+  from { transform: scale(1) translate3d(-1%, 0, 0); opacity: .35; }
+  to { transform: scale(1.12) translate3d(1%, -1%, 0); opacity: .65; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+  .cinematic-light { animation: none; }
+}
